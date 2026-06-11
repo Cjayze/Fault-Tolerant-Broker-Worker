@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq_broker
+    ports:
+      - "5672:5672"   # Cổng kết nối của Celery
+      - "15672:15672" # Giao diện Quản lý (User/Pass mặc định: guest/guest)
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+
+  etcd:
+    image: bitnami/etcd:latest
+    container_name: etcd_cluster
+    environment:
+      - ALLOW_NONE_AUTHENTICATION=yes
+      - ETCD_ADVERTISE_CLIENT_URLS=http://etcd:2379
+      - ETCD_LISTEN_CLIENT_URLS=http://0.0.0.0:2379
+    ports:
+      - "2379:2379"
+
+volumes:
+  rabbitmq_data:
