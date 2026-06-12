@@ -285,11 +285,3 @@ và tự động giao lại các Task chưa hoàn thành cho Worker khác.
 * Prometheus và Grafana
 
 ---
-
-## Tác giả
-
-Nguyễn Đức Mạnh
-
-Đại học Phenikaa
-
-Môn học: Hệ phân tán
